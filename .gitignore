@@ -5,4 +5,4 @@ venv
 /**/*.pyc
 
 # local sqlite
-*.sqlite3
+db.sqlite3
