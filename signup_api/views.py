@@ -1,4 +1,4 @@
-from rest_framework import status, generics
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.request import Request
 from signup_api.serializers.company_serializer import CompanySerializer
@@ -6,10 +6,37 @@ from signup_api.serializers.company_vo import CompanyVo
 from signup_api.serializers.create_one_company_dto_serializer import (
     CreateOneCompanyDtoSerializer,
 )
+from rest_framework.views import APIView
+from drf_yasg.utils import swagger_auto_schema
+
+
+CREATE_COMPANY_SUCCESS = """
+{
+    "status": "success",
+    "data": {
+        "company": {
+                "id": "xxx",
+                "companyName":"xxx",
+                "email":"xxx"
+        }
+    }
+}
+"""
+
+CREATE_COMPANY_FAILURE = """
+{
+    "status": "error",
+    "message": "error message"
+}
+"""
 
 
 # Create your views here.
-class Companies(generics.GenericAPIView):
+class Companies(APIView):
+    @swagger_auto_schema(
+        request_body=CreateOneCompanyDtoSerializer,
+        responses={200: CREATE_COMPANY_SUCCESS, 400: CREATE_COMPANY_FAILURE},
+    )
     def post(self, request: Request):
         create_company_dto_serializer = CreateOneCompanyDtoSerializer(data=request.data)
         if create_company_dto_serializer.is_valid():
