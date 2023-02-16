@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "0653ed19-c2f3-4b4d-914b-78792c3d5a7d",
+		"name": "hi-django",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "763384"
+	},
+	"item": [
+		{
+			"name": "signup a company",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"companyName\": \"test\",\n    \"email\": \"lukddessss4s5ssssssssssssss9@gmail.com\",\n    \"password\": \"11111ss1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/company",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"company"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
